@@ -1,12 +1,12 @@
-package microservices.checkout;
+package microservices.shoppingcart;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CheckoutApplication {
+public class ShoppingcartApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CheckoutApplication.class, args);
+		SpringApplication.run(ShoppingcartApplication.class, args);
 	}
 }

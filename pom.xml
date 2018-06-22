@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>microservices</groupId>
-	<artifactId>CheckOut</artifactId>
+	<artifactId>Shoppingcart</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>CheckOut</name>
+	<name>Shoppingcart</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>

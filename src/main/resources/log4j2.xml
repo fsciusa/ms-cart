@@ -4,13 +4,13 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{yyMMddHHmmss}\t%p\t%c\t%msg\t%n" />
         </Console>
-        <File name="File" fileName="../log/ms-order.log">
+        <File name="File" fileName="../log/ms-shoppingcart.log">
             <PatternLayout pattern="%d{yyMMddHHmmss}\t%p\t%c\t%msg\t%n" />
         </File>
     </Appenders>
 
     <Loggers>
-        <Logger name="microservices.checkout" level="info" additivity="false">
+        <Logger name="microservices.shoppingcart" level="info" additivity="false">
             <AppenderRef ref="Console" />
             <AppenderRef ref="File" />
         </Logger>

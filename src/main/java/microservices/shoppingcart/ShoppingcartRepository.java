@@ -1,8 +1,8 @@
-package microservices.checkout;
+package microservices.shoppingcart;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CheckoutRepository extends JpaRepository<Checkout, Integer> {
+public interface ShoppingcartRepository extends JpaRepository<Shoppingcart, Integer> {
 }
