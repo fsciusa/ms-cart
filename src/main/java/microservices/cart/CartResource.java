@@ -43,6 +43,33 @@ public class CartResource {
         return one.get();
     }
 
+    //TO TEST USE - http://localhost:8093/cart/compare/1/cid/2/caller/safari
+    @GetMapping("/compare/{pid}/cid/{cid}/caller/{caller}")
+    public double compare(@PathVariable int pid, @PathVariable int cid, @PathVariable String caller) {
+        logger.info("RUN\t{}\t{}\tcart\t\t/compare/{}", cid, caller, pid);
+        double price = 0.0, price1 = 0.0, price2 = 0.0;
+        String productUri1 = "http://localhost:8091/product/price/" + pid + "/cid/" + cid + "/caller/cart";
+        String productUri2 = "http://localhost:8092/product/price/" + pid + "/cid/" + cid + "/caller/cart";
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            price1 = restTemplate.getForObject(productUri1, Double.class);
+            logger.info("REQ\t{}\tcart\tproducts1\t/price/{}\t{}", cid, pid, price1);
+        }catch(Exception e){
+            logger.info("ERR\t{}\tcart\tproducts1\t/price/{}\t{}", cid, pid, e.getMessage());
+        }
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            price2 = restTemplate.getForObject(productUri2, Double.class);
+            logger.info("REQ\t{}\tcart\tproducts2\t/price/{}\t{}", cid, pid, price2);
+        }catch(Exception e){
+            logger.info("ERR\t{}\tcart\tproducts2\t/price/{}\t{}", cid, pid, e.getMessage());
+        }
+
+        price=(price1<price2)?price1:price2;
+        String productURI=(price1<price2)?productUri1:productUri2;
+        logger.info("RES\t{}\t{}\tcart\t\t/compare/{}\t{}\tFROM\t{}", cid, caller, pid, price, productURI);
+        return price;
+    }
     @PostMapping("/create/{id}/product/{pid}/cid/{cid}/caller/{caller}")
     public void create(@PathVariable int id, @PathVariable int pid, @PathVariable int cid, @PathVariable String caller) {
         logger.info("RES\t{}\t{}\tcart\t/create/{}/product/{}", cid, caller, id, pid);
